@@ -1,0 +1,43 @@
+import { BonoEntity } from 'src/bono/bono.entity';
+import { ClaseEntity } from 'src/clase/clase.entity';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  OneToMany,
+  OneToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+
+@Entity()
+export class UsuarioEntity {
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
+
+  @Column()
+  cedula: number;
+
+  @Column()
+  nombre: string;
+
+  @Column()
+  grupoInvestigacion: string;
+
+  @Column()
+  extension: number;
+
+  @Column()
+  rol: string;
+
+  @OneToOne(() => UsuarioEntity, (usuario) => usuario.jefe, {
+    nullable: true,
+  })
+  @JoinColumn()
+  jefe: UsuarioEntity;
+
+  @OneToMany(() => BonoEntity, (bono) => bono.usuario)
+  bonos: BonoEntity[];
+
+  @OneToMany(() => ClaseEntity, (clase) => clase.profesor)
+  clases: ClaseEntity[];
+}

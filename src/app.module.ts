@@ -21,7 +21,7 @@ import { UsuarioEntity } from './usuario/usuario.entity';
       username: 'postgres',
       password: 'postgres',
       database: 'parcial',
-      entities: [BonoEntity, ClaseEntity, UsuarioEntity],
+      entities: [UsuarioEntity, ClaseEntity, BonoEntity],
       dropSchema: true,
       synchronize: true,
       keepConnectionAlive: true,

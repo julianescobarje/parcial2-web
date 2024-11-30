@@ -38,8 +38,6 @@ export class ClaseService {
       );
     }
 
-    console.log(usuario);
-
     if (usuario.rol !== 'Profesor') {
       throw new BusinessLogicException(
         'El usuario debe ser un Profesor para crear una clase.',

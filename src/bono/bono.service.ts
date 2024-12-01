@@ -21,13 +21,6 @@ export class BonoService {
   ) {}
 
   async crearBono(bono: BonoEntity): Promise<BonoEntity> {
-    if (!bono.monto || bono.monto <= 0) {
-      throw new BusinessLogicException(
-        'El monto del bono debe ser positivo y no vacío.',
-        BusinessError.PRECONDITION_FAILED,
-      );
-    }
-
     const usuario = await this.usuarioRepository.findOne({
       where: { id: bono.usuario.id },
       relations: ['clases'],

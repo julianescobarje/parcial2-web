@@ -1,7 +1,13 @@
-import { IsNotEmpty, IsNumber, IsObject, IsString } from 'class-validator';
+import {
+  IsNotEmpty,
+  IsNumber,
+  IsObject,
+  IsPositive,
+  IsString,
+} from 'class-validator';
 
 export class BonoDto {
-  @IsNumber()
+  @IsPositive()
   @IsNotEmpty()
   readonly monto: number;
 

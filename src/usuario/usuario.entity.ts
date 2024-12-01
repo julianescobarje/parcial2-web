@@ -26,10 +26,7 @@ export class UsuarioEntity {
   @Column()
   extension: number;
 
-  @Column({
-    type: 'enum',
-    enum: ['Profesor', 'Decana'],
-  })
+  @Column()
   rol: string;
 
   @OneToOne(() => UsuarioEntity, (usuario) => usuario.jefe, {

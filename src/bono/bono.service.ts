@@ -2,12 +2,12 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { BonoEntity } from './bono.entity';
-import { UsuarioEntity } from 'src/usuario/usuario.entity';
+import { UsuarioEntity } from '../usuario/usuario.entity';
 import {
   BusinessError,
   BusinessLogicException,
 } from '../shared/errors/business-errors';
-import { ClaseEntity } from 'src/clase/clase.entity';
+import { ClaseEntity } from '../clase/clase.entity';
 
 @Injectable()
 export class BonoService {

@@ -1,7 +1,7 @@
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { BonoEntity } from 'src/bono/bono.entity';
-import { ClaseEntity } from 'src/clase/clase.entity';
-import { UsuarioEntity } from 'src/usuario/usuario.entity';
+import { BonoEntity } from '../../bono/bono.entity';
+import { ClaseEntity } from '../../clase/clase.entity';
+import { UsuarioEntity } from '../../usuario/usuario.entity';
 
 export const TypeOrmTestingConfig = () => [
   TypeOrmModule.forRoot({

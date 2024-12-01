@@ -1,0 +1,954 @@
+{
+	"info": {
+		"_postman_id": "f010cc4e-501e-440e-82fd-a4ef77582772",
+		"name": "Bonos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11028888"
+	},
+	"item": [
+		{
+			"name": "Crear un profesor",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"pm.globals.set(\"profesor_id\", data.id);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"cedula\": 1,\r\n  \"nombre\": \"profesor-ejemplo\",\r\n  \"grupoInvestigacion\": \"IMAGINE\",\r\n  \"extension\": 234,\r\n  \"rol\": \"Profesor\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/usuarios",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"usuarios"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear una clase",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"pm.globals.set(\"clase_id\", data.id);\r",
+							"pm.globals.set(\"clase_cod\", data.codigo)"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nombre\": \"IP\",\r\n  \"codigo\": \"ISIS122121\",\r\n  \"creditos\": 3,\r\n  \"profesor\": {\r\n    \"id\": \"{{profesor_id}}\"\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/clases",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"clases"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear un bono",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"pm.globals.set(\"bono_id\", data.id);\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"monto\": 3000,\r\n  \"calificacion\": 3.5,\r\n  \"palabraClave\": \"bono\",\r\n  \"usuario\": {\r\n    \"id\": \"{{profesor_id}}\"\r\n  },\r\n  \"clase\": {\r\n    \"id\": \"{{clase_id}}\"\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/bonos",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"bonos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear un bono 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"pm.globals.set(\"bono_mas_4_id\", data.id);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"monto\": 100000,\r\n  \"calificacion\": 4.5,\r\n  \"palabraClave\": \"bono2\",\r\n  \"usuario\": {\r\n    \"id\": \"{{profesor_id}}\"\r\n  },\r\n  \"clase\": {\r\n    \"id\": \"{{clase_id}}\"\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/bonos",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"bonos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear un bono sin un profesor",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Message contains expected errors\", function () {\r",
+							"    const jsonData = pm.response.json();\r",
+							"    const expectedMessages = [\r",
+							"        \"usuario should not be empty\",\r",
+							"        \"usuario must be an object\"\r",
+							"    ];\r",
+							"    pm.expect(jsonData.message).to.eql(expectedMessages);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"monto\": 3000,\r\n  \"calificacion\": 3.5,\r\n  \"palabraClave\": \"bono\",\r\n  \"clase\": {\r\n    \"id\": \"{{clase_id}}\"\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/bonos",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"bonos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear un bono con un profesor invalido",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"El mensaje de error es el correcto\", function () {\r",
+							"    const responseJson = pm.response.json();\r",
+							"    pm.expect(responseJson.message).to.eql('Usuario no encontrado.');\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"monto\": 3000,\r\n  \"calificacion\": 3.5,\r\n  \"palabraClave\": \"bono\",\r\n  \"usuario\": {\r\n    \"id\": \"6f8a2b8b-2c37-48c9-995d-8d09b3e8c52f\"\r\n  },\r\n  \"clase\": {\r\n    \"id\": \"{{clase_id}}\"\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/bonos",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"bonos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear una decana",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"pm.globals.set(\"decana_id\", data.id);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"cedula\": 2,\r\n  \"nombre\": \"decana-ejemplo\",\r\n  \"grupoInvestigacion\": \"TICSW\",\r\n  \"extension\": 12345678,\r\n  \"rol\": \"Decana\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/usuarios",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"usuarios"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear un bono con una decana",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 412\", function () {\r",
+							"    pm.response.to.have.status(412);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"El mensaje de error es el correcto\", function () {\r",
+							"    const responseJson = pm.response.json();\r",
+							"    pm.expect(responseJson.message).to.eql('Solo los usuarios con rol de Profesor pueden tener bonos.');\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"monto\": 3000,\r\n  \"calificacion\": 3.5,\r\n  \"palabraClave\": \"bono\",\r\n  \"usuario\": {\r\n    \"id\": \"{{decana_id}}\"\r\n  },\r\n  \"clase\": {\r\n    \"id\": \"{{clase_id}}\"\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/bonos",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"bonos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear un bono sin una clase",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Message contains expected errors\", function () {\r",
+							"    const jsonData = pm.response.json();\r",
+							"    const expectedMessages = [\r",
+							"        \"clase should not be empty\",\r",
+							"        \"clase must be an object\"\r",
+							"    ];\r",
+							"    pm.expect(jsonData.message).to.eql(expectedMessages);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"monto\": 3000,\r\n  \"calificacion\": 3.5,\r\n  \"palabraClave\": \"bono\",\r\n  \"usuario\": {\r\n    \"id\": \"{{profesor_id}}\"\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/bonos",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"bonos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear un bono con una clase invalida",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"El mensaje de error es el correcto\", function () {\r",
+							"    const responseJson = pm.response.json();\r",
+							"    pm.expect(responseJson.message).to.eql('Clase no encontrada.');\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"monto\": 3000,\r\n  \"calificacion\": 3.5,\r\n  \"palabraClave\": \"bono\",\r\n  \"usuario\": {\r\n    \"id\": \"{{profesor_id}}\"\r\n  },\r\n  \"clase\": {\r\n    \"id\": \"6f8a2b8b-2c37-48c9-995d-8d09b3e8c52f\"\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/bonos",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"bonos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear un profesor 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"pm.globals.set(\"otro_profesor_id\", data.id);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"cedula\": 3,\r\n  \"nombre\": \"otro-profesor\",\r\n  \"grupoInvestigacion\": \"COMIT\",\r\n  \"extension\": 784,\r\n  \"rol\": \"Profesor\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/usuarios",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"usuarios"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear una clase 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"pm.globals.set(\"otra_clase_id\", data.id);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"EDA\",\r\n    \"codigo\": \"ISIS122522\",\r\n    \"creditos\": 3,\r\n    \"profesor\": {\r\n        \"id\": \"{{otro_profesor_id}}\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/clases",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"clases"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear un bono con una clase no asociada al profesor",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 412\", function () {\r",
+							"    pm.response.to.have.status(412);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"El mensaje de error es el correcto\", function () {\r",
+							"    const responseJson = pm.response.json();\r",
+							"    pm.expect(responseJson.message).to.eql('El profesor no está asociado con esta clase.');\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"monto\": 3000,\r\n  \"calificacion\": 3.5,\r\n  \"palabraClave\": \"bono\",\r\n  \"usuario\": {\r\n    \"id\": \"{{profesor_id}}\"\r\n  },\r\n  \"clase\": {\r\n    \"id\": \"{{otra_clase_id}}\"\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/bonos",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"bonos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear un bono con un monto vacio",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Message contains expected errors\", function () {\r",
+							"    const jsonData = pm.response.json();\r",
+							"    const expectedMessages = [\r",
+							"        \"monto should not be empty\",\r",
+							"        \"monto must be a positive number\"\r",
+							"    ];\r",
+							"    pm.expect(jsonData.message).to.eql(expectedMessages);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"calificacion\": 3.5,\r\n  \"palabraClave\": \"bono\",\r\n  \"usuario\": {\r\n    \"id\": \"{{profesor_id}}\"\r\n  },\r\n  \"clase\": {\r\n    \"id\": \"{{clase_id}}\"\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/bonos",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"bonos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear un bono con un monto negativo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Message contains expected errors\", function () {\r",
+							"    const jsonData = pm.response.json();\r",
+							"    const expectedMessages = [\r",
+							"        \"monto must be a positive number\"\r",
+							"    ];\r",
+							"    pm.expect(jsonData.message).to.eql(expectedMessages);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"monto\": -3000,\r\n  \"calificacion\": 3.5,\r\n  \"palabraClave\": \"bono\",\r\n  \"usuario\": {\r\n    \"id\": \"{{profesor_id}}\"\r\n  },\r\n  \"clase\": {\r\n    \"id\": \"{{clase_id}}\"\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/bonos",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"bonos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener todos los bonos para una clase con su código",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Número de bonos > ' + 0, function () {\r",
+							"    var data = pm.response.json()\r",
+							"    pm.expect(data.length).to.greaterThan(0)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/bonos/clase/{{clase_cod}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"bonos",
+						"clase",
+						"{{clase_cod}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener todos los bonos con un código de clase invalido",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"El mensaje de error es el correcto\", function () {\r",
+							"    const responseJson = pm.response.json();\r",
+							"    pm.expect(responseJson.message).to.eql('No se encontraron bonos para la clase con el código especificado.');\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/bonos/clase/6f8a2b8b-2c37-48c9-995d-8d09b3e8c52f",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"bonos",
+						"clase",
+						"6f8a2b8b-2c37-48c9-995d-8d09b3e8c52f"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener todos los bonos para un usuario",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Número de bonos > ' + 0, function () {\r",
+							"    var data = pm.response.json()\r",
+							"    pm.expect(data.length).to.greaterThan(0)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/bonos/usuario/{{profesor_id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"bonos",
+						"usuario",
+						"{{profesor_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener todos los bonos con un usuario invalido",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"El mensaje de error es el correcto\", function () {\r",
+							"    const responseJson = pm.response.json();\r",
+							"    pm.expect(responseJson.message).to.eql('Usuario no encontrado.');\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/bonos/usuario/6f8a2b8b-2c37-48c9-995d-8d09b3e8c52f",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"bonos",
+						"usuario",
+						"6f8a2b8b-2c37-48c9-995d-8d09b3e8c52f"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar un bono",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/bonos/{{bono_id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"bonos",
+						"{{bono_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar un bono con calificación mayor a 4",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 412\", function () {\r",
+							"    pm.response.to.have.status(412);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"El mensaje de error es el correcto\", function () {\r",
+							"    var data = pm.response.json();\r",
+							"    pm.expect(data.message).to.eql(\"No se puede eliminar un bono con calificación mayor a 4.\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/bonos/{{bono_mas_4_id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"bonos",
+						"{{bono_mas_4_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar un bono invalido",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"El mensaje de error es el correcto\", function () {\r",
+							"    var data = pm.response.json();\r",
+							"    pm.expect(data.message).to.eql(\"Bono no encontrado.\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/bonos/6f8a2b8b-2c37-48c9-995d-8d09b3e8c52f",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"bonos",
+						"6f8a2b8b-2c37-48c9-995d-8d09b3e8c52f"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:3000/api/v1",
+			"type": "string"
+		}
+	]
+}

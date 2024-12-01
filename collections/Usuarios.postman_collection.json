@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "611f1773-ec56-4b34-83e4-7497212923db",
+		"_postman_id": "ab1f35c9-83c1-4ea6-ab2e-1ab0223fcae0",
 		"name": "Usuarios",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "11028888"
@@ -46,7 +46,37 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Crear una decana (sin jefe)",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"cedula\": 1,\r\n  \"nombre\": \"decano-ejemplo\",\r\n  \"grupoInvestigacion\": \"TICSW\",\r\n  \"extension\": 12345678,\r\n  \"rol\": \"Decana\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/usuarios",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"usuarios"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
 		},
 		{
 			"name": "Crear un profesor (con jefe)",
@@ -88,7 +118,37 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Crear un profesor (con jefe)",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"cedula\": 2,\r\n  \"nombre\": \"profesor-ejemplo\",\r\n  \"grupoInvestigacion\": \"IMAGINE\",\r\n  \"extension\": 234,\r\n  \"rol\": \"Profesor\",\r\n  \"jefe\": {\r\n    \"id\": \"{{decana_id}}\"\r\n  }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/usuarios",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"usuarios"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
 		},
 		{
 			"name": "Crear un profesor 2",
@@ -126,7 +186,37 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Crear un profesor 2",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"cedula\": 3,\r\n  \"nombre\": \"profesor-con-bonos\",\r\n  \"grupoInvestigacion\": \"COMIT\",\r\n  \"extension\": 784,\r\n  \"rol\": \"Profesor\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/usuarios",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"usuarios"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
 		},
 		{
 			"name": "Crear un profesor con jefe invalido",
@@ -171,7 +261,37 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Crear un profesor con jefe invalido",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"cedula\": 3,\r\n  \"nombre\": \"jefe-invalido\",\r\n  \"grupoInvestigacion\": \"TICSW\",\r\n  \"extension\": 346,\r\n  \"rol\": \"Profesor\",\r\n  \"jefe\": {\r\n      \"id\": \"6f8a2b8b-2c37-48c9-995d-8d09b3e8c52f\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/usuarios",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"usuarios"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
 		},
 		{
 			"name": "Crear un usuario con rol invalido",
@@ -216,7 +336,37 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Crear un usuario con rol invalido",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"cedula\": 4,\r\n  \"nombre\": \"estudiante-ejemplo\",\r\n  \"grupoInvestigacion\": \"TICSW\",\r\n  \"extension\": 839,\r\n  \"rol\": \"Estudiante\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/usuarios",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"usuarios"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
 		},
 		{
 			"name": "Crear un profesor con grupo de investigación invalido",
@@ -261,7 +411,37 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Crear un profesor con grupo de investigación invalido",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"cedula\": 5,\r\n  \"nombre\": \"profesor-invalido\",\r\n  \"grupoInvestigacion\": \"GRUPO\",\r\n  \"extension\": 486,\r\n  \"rol\": \"Profesor\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/usuarios",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"usuarios"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
 		},
 		{
 			"name": "Crear una decana con extensión invalida",
@@ -306,7 +486,37 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Crear una decana con extensión invalida",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"cedula\": 6,\r\n  \"nombre\": \"decana-invalida\",\r\n  \"grupoInvestigacion\": \"TICSW\",\r\n  \"extension\": 223,\r\n  \"rol\": \"Decana\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/usuarios",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"usuarios"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
 		},
 		{
 			"name": "Crear una clase",
@@ -344,7 +554,37 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Crear una clase",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombre\": \"IP\",\r\n  \"codigo\": \"ISIS122623\",\r\n  \"creditos\": 3,\r\n  \"profesor\": {\r\n    \"id\": \"{{profesor_bonos_id}}\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/clases",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"clases"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
 		},
 		{
 			"name": "Crear un bono asociado al profesor",
@@ -370,7 +610,37 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Crear un bono asociado al profesor",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"monto\": 3000,\r\n  \"calificacion\": 3.5,\r\n  \"palabraClave\": \"bono\",\r\n  \"usuario\": {\r\n    \"id\": \"{{profesor_bonos_id}}\"\r\n  },\r\n  \"clase\": {\r\n    \"id\": \"{{clase_id}}\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/bonos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"bonos"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
 		},
 		{
 			"name": "Obtener un usuario",
@@ -401,7 +671,29 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Obtener un usuario",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/usuarios/{{profesor_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"usuarios",
+								"{{profesor_id}}"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
 		},
 		{
 			"name": "Obtener un usuario invalido",
@@ -437,7 +729,29 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Obtener un usuario invalido",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/usuarios/6f8a2b8b-2c37-48c9-995d-8d09b3e8c52f",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"usuarios",
+								"6f8a2b8b-2c37-48c9-995d-8d09b3e8c52f"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
 		},
 		{
 			"name": "Eliminar un usuario",
@@ -468,7 +782,29 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Eliminar un usuario",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/usuarios/{{profesor_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"usuarios",
+								"{{profesor_id}}"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
 		},
 		{
 			"name": "Eliminar una decana",
@@ -504,7 +840,29 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Eliminar una decana",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/usuarios/{{decana_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"usuarios",
+								"{{decana_id}}"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
 		},
 		{
 			"name": "Eliminar un profesor con bonos asociados",
@@ -540,7 +898,29 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Eliminar un profesor con bonos asociados",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/usuarios/{{profesor_bonos_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"usuarios",
+								"{{profesor_bonos_id}}"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
 		},
 		{
 			"name": "Eliminar un usuario invalido",
@@ -576,7 +956,29 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Eliminar un usuario invalido",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/usuarios/6f8a2b8b-2c37-48c9-995d-8d09b3e8c52f",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"usuarios",
+								"6f8a2b8b-2c37-48c9-995d-8d09b3e8c52f"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
 		}
 	],
 	"event": [

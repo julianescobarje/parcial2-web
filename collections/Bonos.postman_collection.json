@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "f010cc4e-501e-440e-82fd-a4ef77582772",
+		"_postman_id": "147f3996-e4c2-4f82-9e72-90987fe1e9c3",
 		"name": "Bonos",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "11028888"
@@ -43,7 +43,41 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Crear un profesor",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"cedula\": 1,\r\n  \"nombre\": \"profesor-ejemplo\",\r\n  \"grupoInvestigacion\": \"IMAGINE\",\r\n  \"extension\": 234,\r\n  \"rol\": \"Profesor\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/usuarios",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"usuarios"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
 		},
 		{
 			"name": "Crear una clase",
@@ -83,7 +117,41 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Crear una clase",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombre\": \"IP\",\r\n  \"codigo\": \"ISIS122121\",\r\n  \"creditos\": 3,\r\n  \"profesor\": {\r\n    \"id\": \"{{profesor_id}}\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/clases",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"clases"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
 		},
 		{
 			"name": "Crear un bono",
@@ -126,7 +194,41 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Crear un bono",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"monto\": 3000,\r\n  \"calificacion\": 3.5,\r\n  \"palabraClave\": \"bono\",\r\n  \"usuario\": {\r\n    \"id\": \"{{profesor_id}}\"\r\n  },\r\n  \"clase\": {\r\n    \"id\": \"{{clase_id}}\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/bonos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"bonos"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
 		},
 		{
 			"name": "Crear un bono 2",
@@ -165,7 +267,41 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Crear un bono 2",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"monto\": 100000,\r\n  \"calificacion\": 4.5,\r\n  \"palabraClave\": \"bono2\",\r\n  \"usuario\": {\r\n    \"id\": \"{{profesor_id}}\"\r\n  },\r\n  \"clase\": {\r\n    \"id\": \"{{clase_id}}\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/bonos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"bonos"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
 		},
 		{
 			"name": "Crear un bono sin un profesor",
@@ -214,7 +350,41 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Crear un bono sin un profesor",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"monto\": 3000,\r\n  \"calificacion\": 3.5,\r\n  \"palabraClave\": \"bono\",\r\n  \"clase\": {\r\n    \"id\": \"{{clase_id}}\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/bonos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"bonos"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
 		},
 		{
 			"name": "Crear un bono con un profesor invalido",
@@ -260,7 +430,41 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Crear un bono con un profesor invalido",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"monto\": 3000,\r\n  \"calificacion\": 3.5,\r\n  \"palabraClave\": \"bono\",\r\n  \"usuario\": {\r\n    \"id\": \"6f8a2b8b-2c37-48c9-995d-8d09b3e8c52f\"\r\n  },\r\n  \"clase\": {\r\n    \"id\": \"{{clase_id}}\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/bonos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"bonos"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
 		},
 		{
 			"name": "Crear una decana",
@@ -299,7 +503,41 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Crear una decana",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"cedula\": 2,\r\n  \"nombre\": \"decana-ejemplo\",\r\n  \"grupoInvestigacion\": \"TICSW\",\r\n  \"extension\": 12345678,\r\n  \"rol\": \"Decana\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/usuarios",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"usuarios"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
 		},
 		{
 			"name": "Crear un bono con una decana",
@@ -345,7 +583,41 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Crear un bono con una decana",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"monto\": 3000,\r\n  \"calificacion\": 3.5,\r\n  \"palabraClave\": \"bono\",\r\n  \"usuario\": {\r\n    \"id\": \"{{decana_id}}\"\r\n  },\r\n  \"clase\": {\r\n    \"id\": \"{{clase_id}}\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/bonos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"bonos"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
 		},
 		{
 			"name": "Crear un bono sin una clase",
@@ -394,7 +666,41 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Crear un bono sin una clase",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"monto\": 3000,\r\n  \"calificacion\": 3.5,\r\n  \"palabraClave\": \"bono\",\r\n  \"usuario\": {\r\n    \"id\": \"{{profesor_id}}\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/bonos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"bonos"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
 		},
 		{
 			"name": "Crear un bono con una clase invalida",
@@ -440,7 +746,41 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Crear un bono con una clase invalida",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"monto\": 3000,\r\n  \"calificacion\": 3.5,\r\n  \"palabraClave\": \"bono\",\r\n  \"usuario\": {\r\n    \"id\": \"{{profesor_id}}\"\r\n  },\r\n  \"clase\": {\r\n    \"id\": \"6f8a2b8b-2c37-48c9-995d-8d09b3e8c52f\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/bonos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"bonos"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
 		},
 		{
 			"name": "Crear un profesor 2",
@@ -479,7 +819,41 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Crear un profesor 2",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"cedula\": 3,\r\n  \"nombre\": \"otro-profesor\",\r\n  \"grupoInvestigacion\": \"COMIT\",\r\n  \"extension\": 784,\r\n  \"rol\": \"Profesor\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/usuarios",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"usuarios"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
 		},
 		{
 			"name": "Crear una clase 2",
@@ -518,7 +892,41 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Crear una clase 2",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"EDA\",\r\n    \"codigo\": \"ISIS122522\",\r\n    \"creditos\": 3,\r\n    \"profesor\": {\r\n        \"id\": \"{{otro_profesor_id}}\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/clases",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"clases"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
 		},
 		{
 			"name": "Crear un bono con una clase no asociada al profesor",
@@ -564,7 +972,41 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Crear un bono con una clase no asociada al profesor",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"monto\": 3000,\r\n  \"calificacion\": 3.5,\r\n  \"palabraClave\": \"bono\",\r\n  \"usuario\": {\r\n    \"id\": \"{{profesor_id}}\"\r\n  },\r\n  \"clase\": {\r\n    \"id\": \"{{otra_clase_id}}\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/bonos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"bonos"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
 		},
 		{
 			"name": "Crear un bono con un monto vacio",
@@ -613,7 +1055,37 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Crear un bono con un monto vacio",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"calificacion\": 3.5,\r\n  \"palabraClave\": \"bono\",\r\n  \"usuario\": {\r\n    \"id\": \"{{profesor_id}}\"\r\n  },\r\n  \"clase\": {\r\n    \"id\": \"{{clase_id}}\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/bonos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"bonos"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
 		},
 		{
 			"name": "Crear un bono con un monto negativo",
@@ -661,7 +1133,37 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Crear un bono con un monto negativo",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"monto\": -3000,\r\n  \"calificacion\": 3.5,\r\n  \"palabraClave\": \"bono\",\r\n  \"usuario\": {\r\n    \"id\": \"{{profesor_id}}\"\r\n  },\r\n  \"clase\": {\r\n    \"id\": \"{{clase_id}}\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/bonos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"bonos"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
 		},
 		{
 			"name": "Obtener todos los bonos para una clase con su código",
@@ -699,7 +1201,30 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Obtener todos los bonos para una clase con su código",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/bonos/clase/{{clase_cod}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"bonos",
+								"clase",
+								"{{clase_cod}}"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
 		},
 		{
 			"name": "Obtener todos los bonos con un código de clase invalido",
@@ -738,7 +1263,30 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Obtener todos los bonos con un código de clase invalido",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/bonos/clase/6f8a2b8b-2c37-48c9-995d-8d09b3e8c52f",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"bonos",
+								"clase",
+								"6f8a2b8b-2c37-48c9-995d-8d09b3e8c52f"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
 		},
 		{
 			"name": "Obtener todos los bonos para un usuario",
@@ -776,7 +1324,30 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Obtener todos los bonos para un usuario",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/bonos/usuario/{{profesor_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"bonos",
+								"usuario",
+								"{{profesor_id}}"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
 		},
 		{
 			"name": "Obtener todos los bonos con un usuario invalido",
@@ -815,7 +1386,30 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Obtener todos los bonos con un usuario invalido",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/bonos/usuario/6f8a2b8b-2c37-48c9-995d-8d09b3e8c52f",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"bonos",
+								"usuario",
+								"6f8a2b8b-2c37-48c9-995d-8d09b3e8c52f"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
 		},
 		{
 			"name": "Eliminar un bono",
@@ -847,7 +1441,29 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Eliminar un bono",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/bonos/{{bono_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"bonos",
+								"{{bono_id}}"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
 		},
 		{
 			"name": "Eliminar un bono con calificación mayor a 4",
@@ -884,7 +1500,29 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Eliminar un bono con calificación mayor a 4",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/bonos/{{bono_mas_4_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"bonos",
+								"{{bono_mas_4_id}}"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
 		},
 		{
 			"name": "Eliminar un bono invalido",
@@ -921,7 +1559,29 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Eliminar un bono invalido",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/bonos/6f8a2b8b-2c37-48c9-995d-8d09b3e8c52f",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"bonos",
+								"6f8a2b8b-2c37-48c9-995d-8d09b3e8c52f"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
 		}
 	],
 	"event": [

@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "4bf700d8-ab7a-40d5-91ef-2c3b529b373f",
+		"_postman_id": "b25e8342-89a3-454e-b7c8-f2b7836caf11",
 		"name": "Clases",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "11028888"
@@ -42,7 +42,37 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Crear un profesor",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"cedula\": 1,\r\n  \"nombre\": \"profesor-ejemplo\",\r\n  \"grupoInvestigacion\": \"IMAGINE\",\r\n  \"extension\": 234,\r\n  \"rol\": \"Profesor\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/usuarios",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"usuarios"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
 		},
 		{
 			"name": "Crear una clase",
@@ -84,7 +114,37 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Crear una clase",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombre\": \"IP\",\r\n  \"codigo\": \"ISIS122121\",\r\n  \"creditos\": 3,\r\n  \"profesor\": {\r\n    \"id\": \"{{profesor_id}}\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/clases",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"clases"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
 		},
 		{
 			"name": "Crear una clase sin un profesor",
@@ -132,7 +192,37 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Crear una clase sin un profesor",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"EDA\",\r\n    \"codigo\": \"ISIS122522\",\r\n    \"creditos\": 3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/clases",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"clases"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
 		},
 		{
 			"name": "Crear una clase con un profesor invalido",
@@ -177,7 +267,37 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Crear una clase con un profesor invalido",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombre\": \"DPOO\",\r\n  \"codigo\": \"ISIS122622\",\r\n  \"creditos\": 3,\r\n  \"profesor\": {\r\n    \"id\": \"6f8a2b8b-2c37-48c9-995d-8d09b3e8c52f\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/clases",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"clases"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
 		},
 		{
 			"name": "Crear una decana",
@@ -215,7 +335,37 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Crear una decana",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"cedula\": 2,\r\n  \"nombre\": \"decana-ejemplo\",\r\n  \"grupoInvestigacion\": \"TICSW\",\r\n  \"extension\": 12345678,\r\n  \"rol\": \"Decana\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/usuarios",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"usuarios"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
 		},
 		{
 			"name": "Crear una clase con una decana",
@@ -260,7 +410,37 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Crear una clase con una decana",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombre\": \"DSW\",\r\n  \"codigo\": \"ISIS260323\",\r\n  \"creditos\": 3,\r\n  \"profesor\": {\r\n    \"id\": \"{{decana_id}}\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/clases",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"clases"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
 		},
 		{
 			"name": "Crear una clase con un código invalido",
@@ -305,7 +485,37 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Crear una clase con un código invalido",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombre\": \"ASW\",\r\n  \"codigo\": \"ISIS2503\",\r\n  \"creditos\": 3,\r\n  \"profesor\": {\r\n    \"id\": \"{{profesor_id}}\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/clases",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"clases"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
 		},
 		{
 			"name": "Obtener una clase",
@@ -336,7 +546,29 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Obtener una clase",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/clases/{{clase_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"clases",
+								"{{clase_id}}"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
 		},
 		{
 			"name": "Obtener una clase invalida",
@@ -372,7 +604,29 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Obtener una clase invalida",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/clases/6f8a2b8b-2c37-48c9-995d-8d09b3e8c52f",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"clases",
+								"6f8a2b8b-2c37-48c9-995d-8d09b3e8c52f"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
 		}
 	],
 	"event": [
